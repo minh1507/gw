@@ -6,7 +6,7 @@ import { BaseService } from 'src/common/base/service.base';
 import { FieldEnum } from 'src/common/enum/field.enum';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Role } from './entities/role.entity';
-import { Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 import { ActionEnum } from 'src/common/enum/action.enum';
 import { ResponseShape } from 'src/common/shape/response.shape';
 import { ContentEnum } from 'src/common/enum/content.enum';
@@ -78,6 +78,7 @@ export class RoleService extends BaseService<Role> {
     const nameDublicate = await this.roleRepository.findOne({
       where: {
         name: updateRoleDto.name,
+        id: Not(path.id),
       },
     });
     if (nameDublicate) this.reponseCustom(ContentEnum.EXIST, FieldEnum.NAME);
@@ -85,6 +86,7 @@ export class RoleService extends BaseService<Role> {
     const codeDublicate = await this.roleRepository.findOne({
       where: {
         code: updateRoleDto.code,
+        id: Not(path.id),
       },
     });
     if (codeDublicate) this.reponseCustom(ContentEnum.EXIST, FieldEnum.CODE);
