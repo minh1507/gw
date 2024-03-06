@@ -18,7 +18,7 @@ export class Account extends BaseEntity {
   username: string;
 
   @ApiProperty({
-    description: 'Id cấp hành chính',
+    description: 'Tên đầy đủ',
     default: 'admin',
   })
   @IsNotEmpty()
