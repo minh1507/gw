@@ -11,7 +11,7 @@ import { RelationTypeBase } from '../../../../common/base/param.base';
 export class Account extends BaseEntity {
   @ApiProperty({
     description: 'Tên tài khoản',
-    default: 'admin@bitecco.vn',
+    default: 'admin',
   })
   @IsNotEmpty()
   @Column('varchar', { length: 100, unique: true, nullable: false })
@@ -34,7 +34,7 @@ export class Account extends BaseEntity {
   phoneNumber: string;
 
   @ApiProperty({
-    description: 'Id nhóm quyền',
+    description: 'Vai trò',
     type: RelationTypeBase,
   })
   @IsNotEmpty()

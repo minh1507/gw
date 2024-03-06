@@ -7,7 +7,7 @@ import ResponseHelper from 'src/common/util/response.util';
 export class LoginPayloadDto {
   @ApiProperty({
     description: 'Tên tài khoản người dùng',
-    default: 'admin@bitecco.vn',
+    default: 'admin',
   })
   @IsNotEmpty({
     message: ResponseHelper.response(ContentEnum.REQUIRED, FieldEnum.USERNAME),

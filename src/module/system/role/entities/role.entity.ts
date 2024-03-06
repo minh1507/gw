@@ -1,7 +1,8 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
 import { BaseEntity } from '../../../../common/base/enitity.base';
+import { Account } from '../../account/entities/account.entity';
 
 @Entity()
 export class Role extends BaseEntity {
@@ -49,4 +50,7 @@ export class Role extends BaseEntity {
     nullable: true,
   })
   description: string;
+
+  @OneToMany(() => Account, (item) => item.role)
+  accounts: Account[];
 }
