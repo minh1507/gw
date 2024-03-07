@@ -4,4 +4,8 @@ export enum FieldEnum {
   ROLE = 'role',
   NAME = 'name',
   CODE = 'code',
+  AUTH = 'auth',
+  USERNAME = 'username',
+  REFRESH_TOKEN = 'refreshToken',
+  PASSWORD = 'password',
 }

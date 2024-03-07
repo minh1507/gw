@@ -6,10 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as redisStore from 'cache-manager-redis-store';
 import { dataSourceOptions } from './config/data-source.config';
 import { JwtModule } from '@nestjs/jwt';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { HttpExceptionFilter } from './common/filter/http-exception.filter';
 import { TypeOrmExceptionFilter } from './common/filter/typeorm-exception.filter';
 import { InitModule } from './module/init.module';
+import { AuthGuard } from './common/guard/auth.guard';
 
 @Module({
   imports: [
@@ -34,6 +35,10 @@ import { InitModule } from './module/init.module';
   ],
   controllers: [],
   providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
