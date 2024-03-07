@@ -6,4 +6,7 @@ export enum ActionEnum {
   IMPORT = 'import',
   EXPORT = 'export',
   INIT = 'init',
+  LOGIN = 'login',
+  LOGOUT = 'logout',
+  REFRESH = 'refresh',
 }

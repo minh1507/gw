@@ -48,7 +48,6 @@ export class AuthService extends BaseService<Account> {
     const accessTokenKey = `${account.username}${uuid()}`;
     const refreshTokenKey = `${account.username}${uuid()}`;
 
-    console.log(account)
     // create token
     const payloadToSign = {
       id: account.id,
@@ -148,7 +147,7 @@ export class AuthService extends BaseService<Account> {
     }${uuid()}`;
 
     const accessToken = await this.jwtService.signAsync(payloadToSign, {
-      secret: process.env.JWT_SECRET_KEY_FOR_ACCESS_TOKEN ?? 'bitecco',
+      secret: process.env.JWT_SECRET_KEY_FOR_ACCESS_TOKEN ?? 'gw',
       expiresIn:
         process.env.JWT_SECRET_KEY_FOR_ACCESS_TOKEN_EXPIRES_IN ?? 86400 + 's',
     });

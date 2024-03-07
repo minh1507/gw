@@ -25,3 +25,13 @@ export class PathDto {
   )
   id: number;
 }
+
+export class RelationTypeBase {
+  @ApiProperty({
+    description: 'Id',
+    name: 'id',
+    required: true,
+    default: 1,
+  })
+  id: number;
+}
